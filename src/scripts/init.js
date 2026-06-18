@@ -49,6 +49,27 @@ const init = function () {
                 }
             }
 
+            // 获取动态 subtitle
+            const subtitleEl = document.querySelector('.intro-subtitle');
+            if (subtitleEl) {
+                const apiUrl = subtitleEl.getAttribute('data-api-url');
+                if (apiUrl && apiUrl.trim()) {
+                    fetch(apiUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.text();
+                        })
+                        .then(data => {
+                            subtitleEl.textContent = data.trim();
+                        })
+                        .catch(error => {
+                            console.error('Failed to fetch subtitle:', error);
+                        });
+                }
+            }
+
             // Init anchors
             // https://www.bryanbraun.com/anchorjs/
             const anchors = new AnchorJS();

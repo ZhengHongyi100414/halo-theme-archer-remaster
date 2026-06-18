@@ -15,6 +15,11 @@ spec:
                 name: subtitle
                 label: 副标题
                 value: "it's better to burn out than to fade away"
+              - $formkit: text
+                name: subtitle_api_url
+                label: 动态副标题API地址
+                value: ''
+                help: '留空则使用静态副标题配置，设置后每次打开页面会从该URL获取副标题内容'
 
         - group: profile
           label: 个人资料
@@ -23,6 +28,11 @@ spec:
                 name: avatar
                 label: 头像
                 value: '/avatar/Misaka.jpg'
+              - $formkit: text
+                name: avatar_link
+                label: 头像跳转链接
+                value: ''
+                help: '点击头像时跳转的链接，为空则不添加链接'
               - $formkit: text
                 name: author
                 label: 作者名
